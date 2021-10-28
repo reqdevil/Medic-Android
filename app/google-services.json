@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "977810681309",
+    "project_id": "medic-a4208",
+    "storage_bucket": "medic-a4208.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977810681309:android:1e37573201dfb33bcd9a34",
+        "android_client_info": {
+          "package_name": "com.berker.medic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977810681309-km8om7tdv8nmrv22fp0i9e5rurtnndi2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD83IS7dVR2VxWVBIb5dPS02S-l69BvceE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977810681309-km8om7tdv8nmrv22fp0i9e5rurtnndi2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
