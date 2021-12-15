@@ -1,8 +1,11 @@
 package com.example.medic.Services
 
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 
 class AuthenticationService {
+    private var TAG: String = "Authentication Service"
+
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var mail: String = "@medic.saglik.gov.tr"
 
@@ -10,22 +13,31 @@ class AuthenticationService {
         val instance = AuthenticationService()
     }
 
-    fun userEntry(username: String, password: String, completion: (Boolean, Exception?) -> Unit) {
-        auth.signInWithEmailAndPassword(username + mail, password).addOnCompleteListener() { task ->
+    fun signupUser(email: String, password: String, userInfo: HashMap<String, Any>, completion: (Boolean, Exception?) -> Unit) {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                DatabaseService.instance.createUser(auth.currentUser!!.uid, userInfo)
+
+                completion(true, null)
+            } else {
+                Log.e(TAG, task.exception.toString())
+                completion(false, task.exception)
+            }
+        }
+    }
+
+    fun signinUser(email: String, password: String, completion: (Boolean, Exception?) -> Unit) {
+        DatabaseService.instance.getUserInformation(email, password, completion = { success, uid, error ->
+            Log.e(TAG, success.toString() + " " + uid + " " + error.toString())
+        })
+    }
+
+    fun sendResetLink(email: String, completion: (Boolean, Exception?) -> Unit) {
+        auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 completion(true, null)
             } else {
-                // Maybe there is no user with this email
-                auth.createUserWithEmailAndPassword(username + mail, password).addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        val userInfo: HashMap<String, Any> = hashMapOf("username" to username, "password" to password, "confirmed" to false)
-                        DatabaseService.instance.createUser(auth.currentUser!!.uid, userInfo)
-
-                        completion(true, null)
-                    } else {
-                        completion(false, task.exception)
-                    }
-                }
+                completion(false, task.exception)
             }
         }
     }

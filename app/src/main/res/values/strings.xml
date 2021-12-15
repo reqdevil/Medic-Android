@@ -2,7 +2,14 @@
     <string name="app_name">Medic</string>
     <string name="password">Şifre</string>
     <string name="enter">Uygulamaya Gir</string>
-    <string name="username">Kullanıcı Adı</string>
+    <string name="username">TC Kimlik Numarası</string>
     <string name="background">background</string>
     <string name="logo">logo</string>
+    <string name="kayit_ol">Kayıt Ol</string>
+    <string name="giris_yap">Giriş Yap</string>
+    <string name="telefon_numarasi">Telefon Numarası</string>
+    <string name="soyisim">Soyisim</string>
+    <string name="isim">İsim</string>
+    <string name="email">E-Posta</string>
+    <string name="forgot_password">Şifremi Unuttum</string>
 </resources>
