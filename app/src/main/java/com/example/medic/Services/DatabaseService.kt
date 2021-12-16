@@ -27,7 +27,7 @@ class DatabaseService {
         userReference.child(uid).updateChildren(userInfo)
     }
 
-    fun getUserInformation(username: String, password: String, completion: (Boolean, String?, Error?) -> Unit) {
+    fun getUserInformation(username: String, password: String, completion: (Boolean, String?, Exception?) -> Unit) {
         userReference.get().addOnSuccessListener { usersSnapshot ->
             for (user in usersSnapshot.children) {
                 val id = user.child("username").value.toString()
@@ -42,7 +42,7 @@ class DatabaseService {
                 }
             }
 
-            completion(false, null, Error("User Not Found"))
+            completion(false, null, Exception("User Not Found"))
         }
     }
 
