@@ -47,6 +47,7 @@ class AuthenticationService {
                     }
                 }
             } else {
+                completion(false, error)
                 Log.e(TAG, error?.localizedMessage.toString())
             }
         })
