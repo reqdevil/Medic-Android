@@ -13,4 +13,6 @@
     <string name="email">E-Posta</string>
     <string name="forgot_password">Şifremi Unuttum</string>
     <string name="go_back">Geri Dön</string>
+    <string name="kimlik_no">TC Kimlik Numarası</string>
+    <string name="name_surname">İsim Soyisim</string>
 </resources>
