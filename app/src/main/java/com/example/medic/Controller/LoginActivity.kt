@@ -73,12 +73,20 @@ class LoginActivity : AppCompatActivity() {
 
     private fun signIn(username: String, password: String) {
         Log.i(TAG, "User entrance started")
-        signInButton.setBackgroundColor(Color.YELLOW)
+        signInButton.setBackgroundColor(Color.rgb(57, 88, 119))
+        signInButton.text = "Giriş Yapılıyor"
+
         AuthenticationService.instance.signInUser(username, password, completion = { success, error ->
             if (success) {
+                signInButton.setBackgroundColor(Color.rgb(87, 138, 167))
+                signInButton.text = "Giriş Yapıldı"
+
                 val mainActivity = Intent(this, MainActivity::class.java)
                 startActivity(mainActivity)
             } else {
+                signInButton.setBackgroundColor(Color.rgb(206, 22, 20))
+                signInButton.text = "Giriş Yap"
+
                 Log.e(TAG, error?.localizedMessage.toString())
             }
         })
@@ -86,11 +94,20 @@ class LoginActivity : AppCompatActivity() {
 
     private fun signUp(username: String, password: String, userInfo: HashMap<String, Any>) {
         Log.i(TAG, "User creation started")
+        signUpButton.setBackgroundColor(Color.rgb(57, 88, 119))
+        signUpButton.text = "Kayıt Yapılıyor"
+
         AuthenticationService.instance.signUpUser(username, password, userInfo, completion = { success, error ->
             if (success) {
+                signUpButton.setBackgroundColor(Color.rgb(87, 138, 167))
+                signUpButton.text = "Kayıt Yapıldı"
+
                 val mainActivity = Intent(this, MainActivity::class.java)
                 startActivity(mainActivity)
             } else {
+                signUpButton.setBackgroundColor(Color.rgb(206, 22, 20))
+                signUpButton.text = "Kayıt Ol"
+
                 Toast.makeText(this, error?.localizedMessage, Toast.LENGTH_SHORT).show()
                 Log.e(TAG, error?.localizedMessage.toString())
             }
