@@ -1,6 +1,7 @@
 package com.example.medic.Controller
 
 import android.content.Intent
+import android.graphics.Color
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,17 @@ import com.example.medic.Services.AuthenticationService
 class LoginActivity : AppCompatActivity() {
     private val TAG = "Login Page"
 
+    private lateinit var usernameField: EditText
+    private lateinit var nameField: EditText
+    private lateinit var passwordField: EditText
+    private lateinit var surnameField: EditText
+    private lateinit var phoneField: EditText
+    private lateinit var mailField: EditText
+    private lateinit var signInButton: Button
+    private lateinit var signUpButton: Button
+    private lateinit var signUpView: LinearLayout
+    private lateinit var forgotPassword: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -20,22 +32,22 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
 
-        val usernameField: EditText = findViewById(R.id.usernameField)
-        val passwordField: EditText = findViewById(R.id.passwordField)
-        val nameField: EditText = findViewById(R.id.nameField)
-        val surnameField: EditText = findViewById(R.id.surnameField)
-        val phoneField: EditText = findViewById(R.id.phoneField)
-        val mailField: EditText = findViewById(R.id.mailField)
+        usernameField = findViewById(R.id.usernameField)
+        passwordField = findViewById(R.id.passwordField)
+        nameField = findViewById(R.id.nameField)
+        surnameField = findViewById(R.id.surnameField)
+        phoneField = findViewById(R.id.phoneField)
+        mailField = findViewById(R.id.mailField)
 
-        val signinButton: Button = findViewById(R.id.signin)
-        val signupButton: Button = findViewById(R.id.signup)
+        signInButton = findViewById(R.id.signin)
+        signUpButton = findViewById(R.id.signup)
 
-        val signUpView: LinearLayout = findViewById(R.id.signUpView)
+        signUpView = findViewById(R.id.signUpView)
         signUpView.visibility = View.GONE
 
-        val forgotPasswordText: TextView = findViewById(R.id.forgotPassword)
+        forgotPassword = findViewById(R.id.forgotPassword)
 
-        signinButton.setOnClickListener() {
+        signInButton.setOnClickListener() {
             if (signUpView.visibility == View.VISIBLE) {
                 signUpView.visibility = View.GONE
             } else {
@@ -43,7 +55,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        signupButton.setOnClickListener() {
+        signUpButton.setOnClickListener() {
             if (signUpView.visibility == View.GONE) {
                 signUpView.visibility = View.VISIBLE
             } else {
@@ -53,17 +65,19 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        forgotPasswordText.setOnClickListener() {
-            val intent = Intent(this, ForgotPasswordActivity::class.java)
-            startActivity(intent)
+        forgotPassword.setOnClickListener() {
+            val forgotPassword = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(forgotPassword)
         }
     }
 
     private fun signIn(username: String, password: String) {
         Log.i(TAG, "User entrance started")
-        AuthenticationService.instance.signinUser(username, password, completion = { success, error ->
+        signInButton.setBackgroundColor(Color.YELLOW)
+        AuthenticationService.instance.signInUser(username, password, completion = { success, error ->
             if (success) {
-                Log.i(TAG, "Status is true")
+                val mainActivity = Intent(this, MainActivity::class.java)
+                startActivity(mainActivity)
             } else {
                 Log.e(TAG, error?.localizedMessage.toString())
             }
@@ -72,9 +86,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun signUp(username: String, password: String, userInfo: HashMap<String, Any>) {
         Log.i(TAG, "User creation started")
-        AuthenticationService.instance.signupUser(username, password, userInfo, completion = { success, error ->
+        AuthenticationService.instance.signUpUser(username, password, userInfo, completion = { success, error ->
             if (success) {
-                Log.i(TAG, "Status is true")
+                val mainActivity = Intent(this, MainActivity::class.java)
+                startActivity(mainActivity)
             } else {
                 Toast.makeText(this, error?.localizedMessage, Toast.LENGTH_SHORT).show()
                 Log.e(TAG, error?.localizedMessage.toString())

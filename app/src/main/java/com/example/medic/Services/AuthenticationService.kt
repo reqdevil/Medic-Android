@@ -7,18 +7,28 @@ class AuthenticationService {
     private var TAG: String = "Authentication Service"
 
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
-    private var mail: String = "@medic.saglik.gov.tr"
 
     companion object {
         val instance = AuthenticationService()
     }
 
-    fun signupUser(email: String, password: String, userInfo: HashMap<String, Any>, completion: (Boolean, Exception?) -> Unit) {
+    fun getUID(): String {
+        return auth.currentUser!!.uid
+    }
+
+    fun signUpUser(email: String, password: String, userInfo: HashMap<String, Any>, completion: (Boolean, Exception?) -> Unit) {
+
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 DatabaseService.instance.createUser(auth.currentUser!!.uid, userInfo)
 
-                completion(true, null)
+                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        completion(true, null)
+                    } else {
+                        completion(false, task.exception)
+                    }
+                }
             } else {
                 Log.e(TAG, task.exception.toString())
                 completion(false, task.exception)
@@ -26,13 +36,23 @@ class AuthenticationService {
         }
     }
 
-    fun signinUser(email: String, password: String, completion: (Boolean, Exception?) -> Unit) {
-        DatabaseService.instance.getUserInformation(email, password, completion = { success, uid, error ->
-            Log.e(TAG, success.toString() + " " + uid + " " + error.toString())
+    fun signInUser(username: String, password: String, completion: (Boolean, Exception?) -> Unit) {
+        DatabaseService.instance.getUserInformation(username, password, completion = { success, mail, error ->
+            if (success) {
+                auth.signInWithEmailAndPassword(mail!!, password).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        completion(true, null)
+                    } else {
+                        completion(false, task.exception)
+                    }
+                }
+            } else {
+                Log.e(TAG, error?.localizedMessage.toString())
+            }
         })
     }
 
-    fun sendResetLink(email: String, completion: (Boolean, Exception?) -> Unit) {
+    fun sendPasswordResetLink(email: String, completion: (Boolean, Exception?) -> Unit) {
         auth.sendPasswordResetEmail(email).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 completion(true, null)
@@ -40,5 +60,9 @@ class AuthenticationService {
                 completion(false, task.exception)
             }
         }
+    }
+
+    fun signOut() {
+        auth.signOut()
     }
 }

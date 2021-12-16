@@ -12,4 +12,5 @@
     <string name="isim">İsim</string>
     <string name="email">E-Posta</string>
     <string name="forgot_password">Şifremi Unuttum</string>
+    <string name="go_back">Geri Dön</string>
 </resources>

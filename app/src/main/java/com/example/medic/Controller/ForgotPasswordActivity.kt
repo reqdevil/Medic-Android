@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import com.example.medic.R
 import com.example.medic.Services.AuthenticationService
 
@@ -23,14 +24,20 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
         val sendButton: Button = findViewById(R.id.sendButton)
 
+        val goBack: TextView = findViewById(R.id.goBack)
+
         sendButton.setOnClickListener() {
-            AuthenticationService.instance.sendResetLink(mailField.text.toString(), completion = { success, error ->
+            AuthenticationService.instance.sendPasswordResetLink(mailField.text.toString(), completion = { success, error ->
                 if (success) {
                     this.finish()
                 } else {
                     Log.e(TAG, error?.localizedMessage.toString())
                 }
             })
+        }
+
+        goBack.setOnClickListener() {
+            this.finish()
         }
     }
 }

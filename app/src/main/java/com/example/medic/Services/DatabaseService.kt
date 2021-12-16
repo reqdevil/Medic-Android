@@ -29,20 +29,32 @@ class DatabaseService {
 
     fun getUserInformation(username: String, password: String, completion: (Boolean, String?, Error?) -> Unit) {
         userReference.get().addOnSuccessListener { usersSnapshot ->
-            for (users in usersSnapshot.children) {
-                val id = users.child("username").value.toString()
-                val pwd = users.child("password").value.toString()
+            for (user in usersSnapshot.children) {
+                val id = user.child("username").value.toString()
+                val pwd = user.child("password").value.toString()
 
-                val uid = users.key.toString()
+                val mail = user.child("email").value.toString()
 
                 if (id == username && pwd == password) {
                     Log.e(TAG, "User Found")
-                    completion(true, uid, null)
+                    completion(true, mail, null)
                     return@addOnSuccessListener
                 }
             }
 
             completion(false, null, Error("User Not Found"))
+        }
+    }
+
+    fun checkUsername(username: String, completion: (Boolean) -> Unit) {
+        userReference.get().addOnSuccessListener { userSnapshot ->
+            for (user in userSnapshot.children) {
+                val id = user.child("username").value.toString()
+
+                if (id == username) {
+
+                }
+            }
         }
     }
 }
