@@ -2,9 +2,10 @@
   <library name="Gradle: com.google.android.gms:play-services-measurement:19.0.2@aar">
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/42eb61bd6779ea2eb80b7fc1f9b2cdac/transformed/play-services-measurement-19.0.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/de4fb2cef4119fd512057042d5419fca/transformed/play-services-measurement-19.0.2/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/de4fb2cef4119fd512057042d5419fca/transformed/play-services-measurement-19.0.2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/de4fb2cef4119fd512057042d5419fca/transformed/play-services-measurement-19.0.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/091b9e152dbd913ae302b8f3908d4ba8/transformed/play-services-measurement-19.0.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/091b9e152dbd913ae302b8f3908d4ba8/transformed/play-services-measurement-19.0.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/091b9e152dbd913ae302b8f3908d4ba8/transformed/play-services-measurement-19.0.2/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.gms/play-services-measurement/19.0.2/38df908a75de9fe408aae0e603c52edbed3b4c36/play-services-measurement-19.0.2-javadoc.jar!/" />
