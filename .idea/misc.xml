@@ -9,6 +9,11 @@
         <entry key="..\:/Projects/Medic/app/src/main/res/layout/activity_forgot_password.xml" value="0.18541666666666667" />
         <entry key="..\:/Projects/Medic/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Projects/Medic/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Projects/Medic/app/src/main/res/layout/fragment_add_patient.xml" value="0.17708333333333334" />
+        <entry key="..\:/Projects/Medic/app/src/main/res/layout/fragment_doctor.xml" value="0.17708333333333334" />
+        <entry key="..\:/Projects/Medic/app/src/main/res/layout/fragment_medication.xml" value="0.17708333333333334" />
+        <entry key="..\:/Projects/Medic/app/src/main/res/layout/fragment_patient.xml" value="0.17708333333333334" />
+        <entry key="..\:/Projects/Medic/app/src/main/res/layout/fragment_settings.xml" value="0.17708333333333334" />
         <entry key="..\:/Projects/Medic/app/src/main/res/menu/doctor_menu.xml" value="0.17708333333333334" />
         <entry key="..\:/Projects/Medic/app/src/main/res/menu/menu.xml" value="0.17708333333333334" />
       </map>
