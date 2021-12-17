@@ -20,4 +20,6 @@
     <string name="settings">Ayarlar</string>
     <string name="patients">Hastalar</string>
     <string name="add_patient">Hasta Ekle</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
