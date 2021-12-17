@@ -15,4 +15,9 @@
     <string name="go_back">Geri Dön</string>
     <string name="kimlik_no">TC Kimlik Numarası</string>
     <string name="name_surname">İsim Soyisim</string>
+    <string name="medics">Doktorlar</string>
+    <string name="medication">İlaçlarım</string>
+    <string name="settings">Ayarlar</string>
+    <string name="patients">Hastalar</string>
+    <string name="add_patient">Hasta Ekle</string>
 </resources>
