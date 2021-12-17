@@ -17,9 +17,6 @@ class ForgotPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
-        supportActionBar?.hide()
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-
         val mailField: EditText = findViewById(R.id.mailField)
 
         val sendButton: Button = findViewById(R.id.sendButton)

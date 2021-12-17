@@ -29,9 +29,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        supportActionBar?.hide()
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-
         usernameField = findViewById(R.id.usernameField)
         passwordField = findViewById(R.id.passwordField)
         nameField = findViewById(R.id.nameField)
