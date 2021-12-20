@@ -6,15 +6,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Controller.Fragments.Doctor.AddPatientFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Patient"
-        android:textSize="32sp"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingHorizontal="20dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColorHint="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/usernameField"
+                android:layout_width="match_parent"
+                android:textColorHint="@color/black"
+                app:hintTextColor="@color/black"
+                android:layout_height="wrap_content"
+                android:hint="@string/username" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <Button
+            android:id="@+id/searchPatientButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="25dp"
+            android:text="@string/search_user"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/patientView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

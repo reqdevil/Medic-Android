@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="20dp"
+    android:layout_marginTop="15dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/profilePicture"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/logo"
+            app:srcCompat="@drawable/ic_hospital" />
+
+        <Space
+            android:layout_width="25dp"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/usernameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="41575911384"
+                android:textSize="20sp" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <TextView
+                android:id="@+id/fullNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:text="Berk Er"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="20dp"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addPersonButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:text=""
+            app:icon="@drawable/ic_person_add"
+            app:iconGravity="textStart" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_margin="8dp"
+        android:background="#d5cfcf" />
+</LinearLayout>
