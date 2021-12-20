@@ -4,9 +4,9 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 
 class AuthenticationService {
-    private var TAG: String = "Authentication Service"
+    private val TAG: String = "Authentication Service"
 
-    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     companion object {
         val instance = AuthenticationService()
@@ -17,7 +17,6 @@ class AuthenticationService {
     }
 
     fun signUpUser(email: String, password: String, userInfo: HashMap<String, Any>, completion: (Boolean, Exception?) -> Unit) {
-
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 DatabaseService.instance.createUser(auth.currentUser!!.uid, userInfo)
@@ -37,7 +36,7 @@ class AuthenticationService {
     }
 
     fun signInUser(username: String, password: String, completion: (Boolean, Exception?) -> Unit) {
-        DatabaseService.instance.getUserInformation(username, password, completion = { success, mail, error ->
+        DatabaseService.instance.getLoginInformation(username, password, completion = { success, mail, error ->
             if (success) {
                 auth.signInWithEmailAndPassword(mail!!, password).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
