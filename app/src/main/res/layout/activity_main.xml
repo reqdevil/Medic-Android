@@ -27,7 +27,7 @@
                     android:id="@+id/profilePhoto"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/logo" />
+                    android:src="@drawable/ic_profile_white" />
 
                 <Space
                     android:layout_width="25dp"
@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content">
 
                         <TextView
-                            android:id="@+id/idText"
+                            android:id="@+id/usernameText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/kimlik_no"
@@ -86,21 +86,25 @@
         </com.google.android.material.card.MaterialCardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/patientPage"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
             <FrameLayout
+                android:id="@+id/patientFragmentView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+                app:layout_constraintBottom_toTopOf="@+id/patientBottomNavigation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigation"
+                android:id="@+id/patientBottomNavigation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="visible"
                 app:backgroundTint="#ce1614"
                 app:itemIconTint="#FFD5CFCF"
                 app:itemTextColor="#D5CFCF"
@@ -108,6 +112,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:menu="@menu/patient_menu" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/doctorPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <FrameLayout
+                android:id="@+id/doctorFragmentView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/doctorBottomNavigation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/doctorBottomNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:backgroundTint="#ce1614"
+                app:itemIconTint="#FFD5CFCF"
+                app:itemTextColor="#D5CFCF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/doctor_menu" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
