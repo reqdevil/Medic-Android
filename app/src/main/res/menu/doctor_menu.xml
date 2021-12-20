@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/patients"
+        android:id="@+id/first"
         android:icon="@drawable/ic_person"
         android:title="@string/patients"/>
 
     <item
-        android:id="@+id/addPerson"
+        android:id="@+id/second"
         android:icon="@drawable/ic_person_add"
         android:title="@string/add_patient" />
 
@@ -14,4 +14,9 @@
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings"
         android:title="@string/settings" />
+
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_logout"
+        android:title="@string/logout" />
 </menu>
