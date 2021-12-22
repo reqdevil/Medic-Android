@@ -25,4 +25,10 @@
     <string name="update_information">Bilgileri Güncelle</string>
     <string name="logout">Çıkış Yap</string>
     <string name="search_user">Kullanıcı Ara</string>
+    <string name="remove_patient">Hasta Kaldır</string>
+    <string name="add_medication">İlaç Ekle</string>
+    <string name="add">EKLE</string>
+    <string name="cancel">İPTAL</string>
+    <string name="medication_name">İlaç Adı</string>
+    <string name="times_per_day">Günde Kaç Kere</string>
 </resources>
