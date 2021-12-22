@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -21,9 +20,7 @@ import com.example.medic.R
 import com.example.medic.Services.AuthenticationService
 import com.example.medic.Services.DatabaseService
 import com.example.medic.Services.StorageService
-import com.example.medic.Utilities.DATA_UPDATED
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity(), OnDataPass {
     private val TAG = "Main Activity"
@@ -123,7 +120,7 @@ class MainActivity : AppCompatActivity(), OnDataPass {
     override fun onDataPass(data: String) {
         Log.e(TAG, data)
 
-        if (data == DATA_UPDATED) {
+        if (data == "DATA_UPDATED") {
             finish()
             startActivity(intent)
         }
