@@ -17,22 +17,28 @@ class AuthenticationService {
     }
 
     fun signUpUser(email: String, password: String, userInfo: HashMap<String, Any>, completion: (Boolean, Exception?) -> Unit) {
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                DatabaseService.instance.createUser(auth.currentUser!!.uid, userInfo)
-
-                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+        DatabaseService.instance.checkUsername(userInfo["username"] as String, completion = { userFound ->
+            if (userFound) {
+                completion(false, Exception("Bu TC Kimlik Numarası daha önceden sisteme kaydedilmiş"))
+            } else {
+                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        completion(true, null)
+                        DatabaseService.instance.createUser(auth.currentUser!!.uid, userInfo)
+
+                        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                completion(true, null)
+                            } else {
+                                completion(false, task.exception)
+                            }
+                        }
                     } else {
+                        Log.e(TAG, task.exception.toString())
                         completion(false, task.exception)
                     }
                 }
-            } else {
-                Log.e(TAG, task.exception.toString())
-                completion(false, task.exception)
             }
-        }
+        })
     }
 
     fun signInUser(username: String, password: String, completion: (Boolean, Exception?) -> Unit) {
@@ -47,7 +53,6 @@ class AuthenticationService {
                 }
             } else {
                 completion(false, error)
-                Log.e(TAG, error?.localizedMessage.toString())
             }
         })
     }
