@@ -34,7 +34,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
         }
 
         goBack.setOnClickListener() {
-            this.finish()
+            finish()
         }
     }
 }
