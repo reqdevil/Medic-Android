@@ -105,7 +105,7 @@ class LoginActivity : AppCompatActivity() {
                 signInButton.setBackgroundColor(Color.rgb(206, 22, 20))
                 signInButton.text = "Giriş Yap"
 
-                Log.e(TAG, error?.localizedMessage.toString())
+                Toast.makeText(this, error?.localizedMessage, Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -113,7 +113,6 @@ class LoginActivity : AppCompatActivity() {
     private fun signUp(username: String, email: String, password: String, userInfo: HashMap<String, Any>) {
         signUpButton.setBackgroundColor(Color.rgb(57, 88, 119))
         signUpButton.text = "Kayıt Yapılıyor"
-        Log.e(TAG, email)
 
         AuthenticationService.instance.signUpUser(email, password, userInfo, completion = { success, error ->
             if (success) {
@@ -138,5 +137,8 @@ class LoginActivity : AppCompatActivity() {
 
         val mainActivity = Intent(this, MainActivity::class.java)
         startActivity(mainActivity)
+
+        signInButton.setBackgroundColor(Color.rgb(206, 22, 20))
+        signInButton.text = "Giriş Yap"
     }
 }
