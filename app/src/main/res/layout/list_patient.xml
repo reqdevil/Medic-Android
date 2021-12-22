@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingHorizontal="20dp"
-    android:layout_marginTop="15dp"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:paddingHorizontal="15dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <CheckBox
+            android:id="@+id/selectPatient"
+            android:layout_width="30dp"
+            android:layout_height="match_parent" />
+
         <ImageView
             android:id="@+id/profilePicture"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:src="@drawable/logo"
-            app:srcCompat="@drawable/ic_hospital" />
+            android:src="@drawable/ic_profile"/>
 
         <Space
             android:layout_width="25dp"
@@ -55,13 +57,13 @@
             android:layout_height="match_parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/addPersonButton"
+            android:id="@+id/addMedicationButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:text=""
-            app:icon="@drawable/ic_person_add"
-            app:iconGravity="textStart" />
+            app:icon="@drawable/ic_medication"
+            app:iconGravity="textStart"
+            android:backgroundTint="@color/red"/>
 
     </LinearLayout>
 
@@ -70,4 +72,5 @@
         android:layout_height="2dp"
         android:layout_margin="8dp"
         android:background="#d5cfcf" />
+
 </LinearLayout>
