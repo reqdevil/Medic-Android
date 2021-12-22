@@ -14,21 +14,18 @@ import com.example.medic.Interface.OnDataPass
 import com.example.medic.Model.Patient
 import com.example.medic.R
 import com.example.medic.Services.DatabaseService
-import com.example.medic.View.MyAdapter
+import com.example.medic.View.AddPatientAdapter
 
-class AddPatientFragment : Fragment(), OnDataPass {
+class AddPatientFragment : Fragment() {
     private val TAG = "Add Patient Fragment"
 
     private lateinit var patientView: RecyclerView
-    private lateinit var patientList: ArrayList<Patient>
 
     private lateinit var searchPatient: Button
     private lateinit var usernameField: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        patientList = ArrayList<Patient>()
     }
 
     override fun onCreateView(
@@ -43,8 +40,6 @@ class AddPatientFragment : Fragment(), OnDataPass {
 
         patientView = view.findViewById(R.id.patientView)
         patientView.layoutManager = LinearLayoutManager(activity)
-        val adapter = MyAdapter(patientList)
-        patientView.adapter = adapter
 
         usernameField = view.findViewById(R.id.usernameField)
 
@@ -53,16 +48,8 @@ class AddPatientFragment : Fragment(), OnDataPass {
     }
 
     private fun searchPatient(uid: String) {
-        Log.e(TAG, "search patient started")
-
         DatabaseService.instance.findPatient(uid, completion = { patientList ->
-            patientView.adapter = MyAdapter(patientList)
+            patientView.adapter = AddPatientAdapter(patientList)
         })
-
-        Log.e(TAG, patientList.toString())
-    }
-
-    override fun onDataPass(data: String) {
-        Log.e(TAG, data)
     }
 }
