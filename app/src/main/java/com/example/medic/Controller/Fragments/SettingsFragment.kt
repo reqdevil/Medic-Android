@@ -18,7 +18,6 @@ import com.example.medic.R
 import com.example.medic.Services.AuthenticationService
 import com.example.medic.Services.DatabaseService
 import com.example.medic.Services.StorageService
-import com.example.medic.Utilities.DATA_UPDATED
 
 
 class SettingsFragment : Fragment() {
@@ -120,7 +119,7 @@ class SettingsFragment : Fragment() {
                 )
             }
 
-            passData(DATA_UPDATED)
+            passData("DATA_UPDATED")
         }
 
         profilePicture.setOnClickListener() { launchGallery() }
@@ -146,7 +145,7 @@ class SettingsFragment : Fragment() {
         }
     }
 
-    fun passData(data: String) {
+    private fun passData(data: String) {
         dataPass.onDataPass(data)
     }
 }
