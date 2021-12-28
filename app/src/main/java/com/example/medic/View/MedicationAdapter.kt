@@ -1,17 +1,24 @@
 package com.example.medic.View
 
+import android.content.Context
+import android.content.IntentSender
+import android.os.CountDownTimer
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.medic.Interface.OnDataPass
 import com.example.medic.Model.Medication
 import com.example.medic.R
 
-class MedicationAdapter(private val medicationList: ArrayList<Medication>) : RecyclerView.Adapter<MedicationAdapter.MyViewHolder>() {
+class MedicationAdapter(private val medicationList: ArrayList<Medication>, private val context: Context, private val TAG_FRAGMENT: String) : RecyclerView.Adapter<MedicationAdapter.MyViewHolder>() {
     private val TAG = "Medication Adapter"
+    lateinit var dataPass: OnDataPass
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val nameText: TextView = itemView.findViewById(R.id.nameText)
@@ -32,11 +39,41 @@ class MedicationAdapter(private val medicationList: ArrayList<Medication>) : Rec
         holder.tpdText.text = currentItem.tpd.toString()
 
         holder.createAlarmButton.setOnClickListener() {
-            Log.e(TAG, "Alarm button created")
+//            startCounter(holder)
+            sendNotification(holder, 0)
         }
     }
 
     override fun getItemCount(): Int {
         return medicationList.size
+    }
+
+    private fun startCounter(holder: MyViewHolder) {
+        val countTime = holder.tpdText.text.toString().toLong()
+        var id = 0
+
+        object : CountDownTimer(/*86400000*/ 10000  / countTime, 1000) {
+            override fun onTick(p0: Long) {
+                if (p0 == 1000 as Long) {
+                    id += 1
+                }
+            }
+
+            override fun onFinish() {
+                sendNotification(holder, id)
+            }
+        }
+    }
+
+    private fun sendNotification(holder: MyViewHolder, id: Int) {
+        val builder = NotificationCompat.Builder(context, TAG_FRAGMENT)
+            .setSmallIcon(R.drawable.logo)
+            .setContentTitle(holder.nameText.text.toString())
+            .setContentText("İlacınızı içme vaktiniz gelmiştir.")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+       with(NotificationManagerCompat.from(context)) {
+           notify(id, builder.build())
+       }
     }
 }

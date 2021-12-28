@@ -22,17 +22,17 @@ class StorageService {
     }
 
     fun getProfilePicture(uid: String, completion: (Boolean, ByteArray?, Exception?) -> Unit) {
-//        profileReference.child(uid).getBytes(1024 * 1024).addOnCompleteListener() { task ->
-//            if (task.isSuccessful) {
-//                completion(true, task.result, null)
-//            } else {
-//                completion(false, null, task.exception)
-//            }
-//        }
-        profileReference.listAll().addOnSuccessListener { listResult ->
-            for (list in listResult.items) {
-                Log.e(TAG, list.toString())
+        profileReference.child(uid).getBytes(1024 * 1024).addOnCompleteListener() { task ->
+            if (task.isSuccessful) {
+                completion(true, task.result, null)
+            } else {
+                completion(false, null, task.exception)
             }
         }
+//        profileReference.listAll().addOnSuccessListener { listResult ->
+//            for (list in listResult.items) {
+//                Log.e(TAG, list.toString())
+//            }
+//        }
     }
 }
